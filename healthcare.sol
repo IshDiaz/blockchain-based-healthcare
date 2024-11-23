@@ -13,4 +13,11 @@ contract Healthcare {
     event RecordAdded(uint recordId, address owner);
     event AccessGranted(uint recordId, address user);
     event AccessRevoked(uint recordId, address user);
+
+    function addRecord(uint recordId, string memory dataHash) public {
+        Record storage record = records[recordId];
+        record.dataHash = dataHash;
+        record.owner = msg.sender;
+        emit RecordAdded(recordId, msg.sender);
+    }
 }
