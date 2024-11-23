@@ -9,4 +9,4 @@ contract Healthcare {
     }
 
     mapping(uint => Record) public records;
-}
+ }
