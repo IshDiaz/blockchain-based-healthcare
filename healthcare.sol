@@ -9,4 +9,8 @@ contract Healthcare {
     }
 
     mapping(uint => Record) public records;
- }
+
+    event RecordAdded(uint recordId, address owner);
+    event AccessGranted(uint recordId, address user);
+    event AccessRevoked(uint recordId, address user);
+}
