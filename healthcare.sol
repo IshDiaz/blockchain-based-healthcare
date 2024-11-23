@@ -32,4 +32,9 @@ contract Healthcare {
         records[recordId].permissions[user] = false;
         emit AccessRevoked(recordId, user);
     }
+
+    function viewRecord(uint recordId) public view returns (string memory) {
+        require(records[recordId].permissions[msg.sender], "Access denied");
+        return records[recordId].dataHash;
+    }
 }
