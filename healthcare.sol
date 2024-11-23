@@ -26,4 +26,10 @@ contract Healthcare {
         records[recordId].permissions[user] = true;
         emit AccessGranted(recordId, user);
     }
+
+    function revokeAccess(uint recordId, address user) public {
+        require(records[recordId].owner == msg.sender, "Not authorized");
+        records[recordId].permissions[user] = false;
+        emit AccessRevoked(recordId, user);
+    }
 }
