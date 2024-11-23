@@ -20,4 +20,10 @@ contract Healthcare {
         record.owner = msg.sender;
         emit RecordAdded(recordId, msg.sender);
     }
+
+    function grantAccess(uint recordId, address user) public {
+        require(records[recordId].owner == msg.sender, "Not authorized");
+        records[recordId].permissions[user] = true;
+        emit AccessGranted(recordId, user);
+    }
 }
